@@ -1,0 +1,119 @@
+<style>
+
+    
+    .dashboard_main_container {
+        width: 100vw;
+        display: flex;
+        margin-top: 80px;
+    }
+    
+    /* Sidebar (left_main_container) */
+    .left_main_container {
+        width: 270px;
+        height: 100vh;
+        position: fixed;
+        top: 79px;
+        left: 0;
+        border: 0.5px solid darkgray;
+        background-color: transparent;
+        transition: transform 0.3s ease-in-out;
+    }
+    
+    /* Main Content (right_main_container) */
+    .right_main_container {
+        width: calc(100% - 270px);
+        margin-left: 270px;
+        color: black;
+        padding: 20px;
+        padding-top: 0;
+    }
+
+
+    
+    /* ========== Responsive Design ========== */
+    
+    /* For tablets and smaller screens */
+    @media screen and (max-width: 900px) {
+        .left_main_container {
+            top: 80px;
+            width: 250px; /* Reduce sidebar width */
+        }
+        .right_main_container {
+            margin-left: 250px; /* Adjust main content */
+        }
+    }
+    
+    /* For mobile screens */
+    @media screen and (max-width: 600px) {
+        .left_main_container {
+            width: 100%;
+            background-color: white;
+            position: fixed;
+            top: 80px;
+            left: -100%; /* Hide sidebar initially */
+            height: 100vh;
+            transition: left 0.3s ease-in-out;
+            z-index: 180;
+        }
+    
+        .right_main_container {
+            margin-top: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: 0;
+            width: 100%;
+        }
+    
+        /* Show sidebar when toggled */
+        .left_main_container.show {
+            left: 0; /* Slide sidebar into view */
+            width: 100%;
+        }
+    
+        /* Menu Button (Toggle Sidebar) */
+        .menu-toggle {
+            height: 50px;
+            display: block;
+            position: fixed;
+            top: 80px;
+            right: 0px;
+            color: orangered;
+            background-color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+    }
+
+    @media screen and (min-width: 910px) {
+        .menu-toggle {
+            display: none;
+        }
+    }
+    
+</style>
+
+<div class="menu_div_outer_div">
+    <button class="menu-toggle">show all options</button>
+</div>
+
+<div class="dashboard_main_container">
+    <div class="left_main_container">
+        <%- include("../includes/left_main_container.ejs") %>
+    </div>
+    <div class="right_main_container">
+        <%- include("../includes/flash.ejs") %>
+        <%- body %>
+    </div>
+</div>
+
+
+<script>
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+        document.querySelector(".left_main_container").classList.toggle("show");
+        
+    });
+    
+</script>

@@ -1,0 +1,29 @@
+<% layout("/layouts/bilerplatebeforelogin") %>
+<link rel="stylesheet" href="/css/answer/editAnswer.css">
+
+<div class="main_inner_container border">
+
+    <div class="back_home_edit"><i class="fa-solid fa-arrow-left-long"></i>    <a style="margin-top: 60px;"  href="/qna/<%= id %>">back to Home</a></div>
+
+    <div class="answer_inro">
+        <h3 class="answer_show_username"><%= currUser.username %></h3>
+        <p class="student_left_intro_genre"><%= currUser.genre %> | <%= currUser.branch %> | class of <%= currUser.batch %></p>
+    </div>
+
+
+    <h4>Your Current Answer</h4>
+    <p class="answer_show_content">
+        <%= answer.ansContent %></p>
+    <h4>Edit Your Answer</h4>
+    <form method="post" action="/qna/<%= id %>/<%= answer._id %>?_method=PATCH" class="needs-validation" novalidate>
+        <textarea name="answer[ansContent]" class="form-control" id="" rows="5" required><%= answer.ansContent %></textarea>
+        <div class="invalid-feedback">Please provide a valid Edited Answer.</div>
+        <div class="valid-feedback">Looks good!</div>
+        <br><br>
+        <div class="class_btn">
+            <button class="btn edit_btn">Edit Answer</button>
+            <div class="cancle_btn btn"><a href="/qna/<%= id %>">Cancle</a></div>
+        </div>
+    </form>
+
+</div>

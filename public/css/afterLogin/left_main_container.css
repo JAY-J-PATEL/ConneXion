@@ -1,0 +1,39 @@
+
+
+.sidebar_div {
+    width: 92%;
+    background-color: white;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 2px 0 2px 0;
+    font-size: 16px;
+    padding: 10px;
+    color: black;
+    font-family: "Inter";
+    margin-right: 1rem;
+    margin-left: 10px;
+}
+
+.sidebar_div i {
+    margin: 10px;
+    font-size: 16px;
+    color: darkgray;
+}
+
+.sidebar_links {
+    text-decoration: none;
+}
+
+.active .sidebar_div{
+    background-color: rgba(255, 68, 0, 0.099); /* Highlight active link */
+    color: orangered;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: 0.3s ease-in;
+}
+
+
+.active .sidebar_div i{
+    color: orangered;
+}

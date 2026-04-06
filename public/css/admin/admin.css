@@ -1,0 +1,15 @@
+.each_user {
+    background-color: rgba(255, 68, 0, 0.159);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid orangered !important;
+    border-radius: 10px;
+}
+
+select {
+    width: 100px;
+    height: 35px;
+    padding: 0.2rem;
+    padding-right: 0.5rem;
+}

@@ -1,0 +1,123 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/events/showevent.css">
+<link rel="stylesheet" href="/css/events/eventStyle.css">
+<link rel="stylesheet" href="/css/events/newevent.css">
+
+<a href="/events" style="color: darkgray; text-decoration: none;"><i class="fa-solid fa-arrow-left"></i>  Back to home</a>
+
+<div class="show_events_main_inner_continer">
+    
+    <div class="show_title">
+        <%= event.title %>
+    </div>
+        
+    <div class="show_img">
+        <img src="<%= event.image %>" alt="img">
+    </div>
+
+    
+
+
+    
+   
+
+    <div class="small_info_events">
+        
+        <div class="price">
+            <% if(event.price === 0){ %>
+                <i class="fa-solid fa-indian-rupee-sign"></i>  FREE
+            <% } else { %>
+                <i class="fa-solid fa-indian-rupee-sign"></i>  <%= event.price.toLocaleString("en-IN") %>&#8377;
+            <% } %>
+        </div>
+        <div class="location"><i class="icon_color fa-solid fa-location-dot"></i> <%= event.location %></div>
+    
+        <div class="show_tags">
+            <i class="fa-solid fa-rocket"></i> 
+            <% event.eventtype.forEach(e => { %>
+                 <span class="show_all_event_tags"><%= e %></span>
+            <% }); %>
+        </div>
+
+        <div class="hosted_by">
+            <p><i class="fa-regular fa-user"></i>  Hosted By <b><%= event.host.username %></b></p>
+        </div>
+    
+    </div>
+
+    <hr>
+
+    <div class="show_description">
+        <%= event.description %>
+    </div>
+    
+
+    <% if(currUser && currUser._id.equals(event.host._id)) { %>
+
+    <div class="show_evnt_edit_delete_btns">
+        <div class="show_event_edit_btn edit_event_btn">
+            <a class="btn post_event_btn" href="/events/<%= event._id %>/edit"><i class="fa-solid fa-pen-to-square"></i>  Edit Event</a>
+        </div>
+        <div class="show_event_delete_btn  delete_event_btn">
+            <form method="post" action="/events/<%= event._id %>?_method=DELETE">
+                <button class="btn  post_event_btn delete_btn"><i class="fa-solid fa-trash"></i>  Delete Event</button>
+            </form>
+        </div>
+    </div>
+
+    <% } %>
+
+</div>
+
+<br>    
+<hr>
+<br>
+
+<h2 class="mb-3">Alumni Insights</h2>
+<% if(currUser && currUser.genre !== "Student") { %>
+    <div class="insights_container">
+        <div class="insights_particular_container">
+            <form method="post" action="/events/<%= event._id %>/insights" novalidate class="needs-validation">
+                <textarea class="form-control ml-3 mr-3" name="insight[content]" rows="5" placeholder="write your experience here..." required></textarea>
+                <div class="invalid-feedback">Please share your insights before submitting</div>
+            <br>
+            <button class="mb-3 btn btn-outline-danger">Submit</button>
+            </form>    
+        </div>
+    </div>
+
+    <hr>
+<% } %>
+
+<div class="show_insights">
+
+    <div class="show_insights_innerdiv">
+            <% for(insight of event.insights) { %>
+                <div class="each_insight">
+                    <h5 class="each_insight_title"><%= insight.insightProvider.username %></h5>
+                    <p class="each_insight_text"><%= insight.content %></p>
+                    
+                    <% if(currUser && currUser._id.equals(insight.insightProvider._id)) { %>
+                        <form class="mt-2" method="POST" action="/events/<%= event._id %>/insights/<%= insight._id %>?_method=DELETE">
+                            <button class="btn btn-dark delete_event_btn">Delete</button>
+                        </form>
+                    <% } %>
+                </div>
+                
+            <% } %>   
+            
+    </div>    
+</div>
+
+
+<script>
+    const deleteBtn = document.querySelector(".delete_event_btn");
+    deleteBtn.addEventListener("click", (e) => {
+        const confimation = confirm("Are you sure want to delete?");
+        if(!confimation) {
+            e.preventDefault();
+        }
+    });
+
+</script>
+

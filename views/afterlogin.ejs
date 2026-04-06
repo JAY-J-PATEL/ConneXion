@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/afterLogin/dashbord.css">
+
+
+<div class="inside_main_container">
+
+    <div class="intro_div">
+        <div class="welcom_back_heading">Welcome, <%= currUser.username %>!</div>
+        <div class="intro_div_intro">class of <%= currUser.batch %> | <%= currUser.branch %> </div>
+    </div>
+
+
+    <div class="latest_event_job_alumni">
+        <div class="mutual_latest_card event_section">
+            <div class="event_heading">Upcoming Events</div>
+            <p class="event_heading_desc">recent event posted by student</p>
+            
+            <div class="event_name"><%= allEvents[allEvents.length - 1].title %></div>
+            <div class="event_description"><%= allEvents[allEvents.length - 1].description  %></div>
+            
+            <div class="date_price_venue">
+                <div class="event_type">
+                    <i class="fa-solid fa-rocket"></i><%= allEvents[allEvents.length - 1].eventtype %>
+                </div>
+
+                <div class="price_section"> 
+                    <% if(allEvents[allEvents.length - 1].price === 0){ %>
+                        <i class="fa-solid fa-indian-rupee-sign"></i>FREE
+                    <% } else { %>
+                        <i class="fa-solid fa-indian-rupee-sign"></i>&#8377;<%= allEvents[allEvents.length - 1].price.toLocaleString("en-IN") %>
+                    <% } %>
+                </div>
+
+                <div class="location_section">
+                    <i class="fa-solid fa-location-dot"></i><%= allEvents[allEvents.length - 1].location %>
+                </div>
+            </div>
+            <div class="view_all_events_link">
+                <a href="/events">view all events</a>
+            </div>
+        </div>
+
+
+        <div class="mutual_latest_card">
+            <div class="event_heading">Upcoming Jobs</div>
+            <p class="event_heading_desc">recent job posted by alumni</p>
+            
+            <div class="event_name"><%= allJobs[allJobs.length - 1].jobRole %></div>
+            <div class="event_description"><%= allJobs[allJobs.length - 1].jobDescription  %></div>
+            
+            <div class="date_price_venue">
+                <div class="event_type">
+                    <i class="fa-solid fa-rocket"></i><%= allJobs[allJobs.length - 1].companyName %>
+                </div>
+
+                <div class="price_section"> 
+                    <% if(allJobs[allJobs.length - 1].locatoin){ %>
+                        <i class="fa-solid fa-indian-rupee-sign"></i>FREE
+                    <% } else { %>
+                        <i class="fa-solid fa-bag-shopping"></i><%= allJobs[allJobs.length - 1].jobType %>
+                    <% } %>
+                </div>
+
+                <div class="location_section">
+                    <i class="fa-solid fa-location-dot"></i><%= allJobs[allJobs.length - 1].jobLocation %>
+                </div>
+            </div>
+            <div class="view_all_events_link">
+                <a href="/jobs">view all Jobs</a>
+            </div>
+        </div>
+        <div class="mutual_latest_card">
+            <div class="event_heading">Latest Internship</div>
+            <p class="event_heading_desc">recent internship posted by alumni</p>
+            
+            <div class="event_name">
+                <%= allInternships[allInternships.length - 1].jobRole %></div>
+            <div class="event_description">
+                <%= allInternships[allInternships.length - 1].jobDescription  %></div>
+            
+            <div class="date_price_venue">
+                <div class="event_type">
+                    <i class="fa-solid fa-rocket"></i><%= allInternships[allInternships.length - 1].companyName %>
+                </div>
+
+                <div class="price_section"> 
+                    
+                    <i class="fa-solid fa-bag-shopping"></i>
+                        <%= allInternships[allInternships.length - 1].jobType %>
+                    
+                </div>
+
+                <div class="location_section">
+                    <i class="fa-solid fa-location-dot"></i><%= allInternships[allInternships.length - 1].jobLocation %>
+                </div>
+            </div>
+            <div class="view_all_events_link">
+                <a href="/jobs">view all Jobs</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="latest_questions_div">
+        <div class="all_branch_que">
+            <div class="question_div_heading">Latest Question</div>
+            <div class="all_branch_desc">
+                <div class="question all_branch_desc_username"><%= allQuestions[allQuestions.length - 1].queAuthor.username  %></div>
+                <div class="question all_branch_desc_branch"><%= allQuestions[allQuestions.length - 1].branch  %></div>
+                <div class="question all_branch_desc_queContent"><%= allQuestions[allQuestions.length - 1].queContent  %></div>
+            </div>
+            <div class="see_all_questions">
+                <a href="/qna">See all Questions</a>
+            </div>
+        </div>
+    </div>
+
+</div>    
+
+

@@ -1,0 +1,18 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/admin/admin.css" />
+
+
+<div class="mt-4">
+	<% for(user of [...users].reverse()) { %>
+
+		<div class="each_user border mb-4 p-4">
+			<div class="user_details">
+				<b><%= user.username %></b> <br />
+				<%= user.genre %> | <%= user.branch %> | <%= user.batch %>
+			</div>
+			<div class="border">
+				<a href="/ConneXion/user/<%= user.id %>"><button class="btn btn-outline-dark">Show</button></a>
+			</div>
+		</div>
+		<% } %>
+</div>

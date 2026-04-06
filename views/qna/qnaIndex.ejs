@@ -1,0 +1,112 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/qna/qnaIndex.css">
+
+
+<div class="qna_main_container_inner_container">
+    
+    
+    
+    <div class="filter_div">
+        
+        <div id="searchContainer" class="search_div">
+            <input type="text" class="form-control" id="searchBox" placeholder="&#xF002; Search question" style="font-family:Inter, FontAwesome" />
+            <button id="searchButton">Search</button>
+        </div>
+        
+        <div class="select_filter_container">
+            <select  class="form-select custom-select" id="branchFilter" required>
+                <option value="all">All Branches</option>
+                <option value="Computer Science Engineering">Computer Science Engineering</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Aeronautical Engineering">Aeronautical Engineering</option>
+                <option value="Chemical Engineering">Chemical Engineering</option>
+                <option value="Information Technology">Information Technology</option>                                                              
+                <option value="Environmental Engineering">Environmental Engineering</option>
+                <option value="Biomedical Engineering">Biomedical Engineering</option>
+                <option value="Industrial Engineering">Industrial Engineering</option>
+            </select>
+            <div class="filter_icon_container">
+                
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="newque_div">
+        <a href="/qna/new" class="newQuestion_btn"><button>Ask Question</button></a>
+    </div>
+    
+    
+    <% for(let question of [...allQuestion].reverse()) { %>
+        
+        <div class="one_question_body question-item" data-branch="<%= question.branch %>">
+                <span class="qna_show_link"><a href="/qna/<%= question._id %>" >
+                <div class="student_inro">
+                    <div class="student_left_intro">
+                        <h3 class="student_left_intro_name"><%= question.queAuthor.username %></h3>
+                        <p class="student_left_intro_genre"><%= question.queAuthor.genre %> | <%= question.queAuthor.branch %> | class of <%= question.queAuthor.batch %></p>
+                        <p class="student_left_intro_genre"></p>
+                    </div>
+                    <% if(currUser && currUser._id.equals(question.queAuthor._id)) { %>
+                        <div class="edit_delete_que_btn">
+                            <a class="que_edit_btn" href="/qna/<%= question._id %>/edit"><button><i class="fa-solid fa-pen-to-square"></i></button></a>
+                        
+                            <form method="post" class="que_delete_btn" action="/qna/<%= question._id %>?_method=DELETE">
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </div>
+                    <% } %>
+                </div>
+                <p class="question_title"><%= question.queTitle %></p>
+                <p class="question_content"><%= question.queContent %></p>
+
+
+            
+
+                <% if(question.branch.length == 1) { %>
+                    <p class="student_left_intro_branch"><%= question.branch[0] %></p>
+                <% } else { %>
+                    <div class="multi_branch">
+                        <p class="student_left_intro_branch"><%= question.branch[0] %></p>  <p class="branch_span">+<%= question.branch.length - 1 %> more</p>                            
+                    </div>
+                <% } %>
+                
+                <hr>
+                
+                
+                <% if(question.answers[0]) { %>
+                    <div class="index_ans_box">
+                        <b>Answer</b> : <%= question.answers[0].ansContent %>
+                    </div>
+                <% } %>
+
+                <!-- <span class="answers_heading">Answers</span> -->
+
+
+
+                <div class="see_view_div">
+                    <div class="see_div">
+                        <a href="/qna/<%= question._id %>" class="see_detail_a"><i class="fa-solid fa-comment"></i>  Post Answer</a>
+                    </div>
+                    <div class="view_div">
+                        <a href="/qna/<%= question._id %>" class="view_detail_a">View details</a>
+                    </div>
+                </div>
+
+                <div class="answers_count">
+                    <% if(question.answers.length <= 1) { %> 
+                        <%= question.answers.length %> Answer posted
+                    <% } else { %>
+                        <%= question.answers.length %> Answers posted
+                    <% } %>
+                </div>
+
+
+            </div>  
+        </a></span>
+    <% } %>
+</div>
+
+<script src="../../js/filters/qnaFilter.js"></script>

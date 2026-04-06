@@ -1,0 +1,124 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/chats/chatIndex.css">
+
+
+<h1>this is chat index</h1>
+
+<div class="row">
+    <div class="col-md-2">
+        <% for(user of allUsers) { %>
+            <div class="card border p-2 mt-3 user-list" data-id="<%= user._id %>">
+                <%= user.username %> 
+
+                <% if(user.is_online === '1') { %>
+                    <span class="online-status" id="<%= user._id %>-status"><div>online</div></span>
+                <% } else { %>
+                    <span class="offline-status" id="<%= user._id %>-status"><div>offline</div></span>
+                <% } %>
+
+            </div>
+        <% } %>
+    </div>
+
+    <div class="col-md-9">
+        <div class="start-heading">
+            click to start the chat
+        </div>
+
+        <div class="chat-section">
+            <div id="chat-container">
+                <div class="current-user-chat"></div>
+                <div class="distance-user-chat"></div>
+            </div>
+
+            <form action="" id="chat-form">
+                <div >
+                    <input type="text" class="col-md-4" name="message" placeholder="Enter message...", id="message" required>
+                    <input type="submit" value="send message" class="btn btn-outline-danger">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    let sender_id = "<%= currUser._id %>";
+    let receiver_id;
+    let socket = io('/user-namespace', {
+        auth: {
+            token: "<%= currUser._id %>"
+        }
+    });
+
+
+
+    let start_heading = document.querySelector(".start-heading");
+    let chat_section = document.querySelector(".chat-section");
+    let user_list = document.querySelectorAll(".user-list");
+
+    user_list.forEach(user => {
+        user.addEventListener("click", function() {
+
+            let userId = this.getAttribute('data-id');
+            receiver_id = userId;
+            console.log(receiver_id);
+
+            start_heading.style.display = "none";
+            chat_section.style.display = "block";
+        });
+    });
+
+    // update user online status
+    socket.on('getOnlineUser', function(data) {
+        $('#'+data.user_id+'-status').text('Online');
+        $('#'+data.user_id+'-status').removeClass('offline-status');
+        $('#'+data.user_id+'-status').addClass('online-status');
+    });
+
+    // update user offline status
+    socket.on('getOfflineUser', function(data) {
+        console.log("Offline user event received:", data); // <-- Add this line
+        $('#'+data.user_id+'-status').text('offline');
+        $('#'+data.user_id+'-status').removeClass('online-status');
+        $('#'+data.user_id+'-status').addClass('offline-status');
+
+    });
+
+    // chat save of user
+    document.querySelector('#chat-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        let message = document.querySelector('#message').value;
+        
+        fetch('/save-chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                sender_id: sender_id,
+                receiver_id: receiver_id,
+                message: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(data);
+                document.querySelector('#message').value = ''; // Clear message field
+                let chat = data.data.message;
+                let html = `<div class="current-user-chat">${chat}</div>`;
+                document.querySelector('.chat-box').innerHTML += html; // Assuming you have a chat box to append
+            } else {
+                console.error('Error:', data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+    
+    
+
+</script>

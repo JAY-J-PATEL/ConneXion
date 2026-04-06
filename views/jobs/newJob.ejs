@@ -1,0 +1,203 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/jobs/newJob.css" />
+
+<br />
+
+<a href="/jobs" style="color: darkgray; text-decoration: none;"><i class="fa-solid fa-arrow-left"></i>  Back to home</a>
+<div class="main_inside_job_conainer">
+	<div class="job_page_intro_conainer">
+		<div class="main_job_heading">
+			<p class="job_heading">Post Job Opportunity</p>
+			<p class="job_sub_heading">
+				share job opportunity with fellow alumni and aluma students
+			</p>
+		</div>
+	</div>
+
+	<form action="/jobs" method="post" class="needs-validation" novalidate>
+		<div class="information border">
+			<div class="each_job_input">
+				<p>Job Role</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[jobRole]"
+					placeholder="e.g. Fullstack Developer"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter valide job role</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Location</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[jobLocation]"
+					placeholder="e.g. San Francisco, CA or Remote"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter valid Location</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Job Type</p>
+				<select class="form-select" name="job[jobType]" id="">
+					<option value="Full Time">Full Time</option>
+					<option value="Part Time">Part Time</option>
+					<option value="Internship">Internship</option>
+				</select>
+				<div class="valid-feedback">Looks good!</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Salary Range</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[salaryRange]"
+					placeholder="e.g. ₹10L - ₹12L"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter valid Salary</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Department</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[department]"
+					placeholder="e.g. Engineering"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter valid Department</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Application Deadline</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[applicationDeadline]"
+					placeholder="e.g. August 30, 2025"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter Valid Application Deadline</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Experience Required</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[experience]"
+					placeholder="e.g. 3+ years"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter Valid required Experience</div>
+			</div>
+
+			<div class="each_job_input">
+				<p>Education Required</p>
+				<input
+					class="form-control"
+					type="text"
+					name="job[education]"
+					placeholder="e.g. Bachelor's degree"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Enter required Education</div>
+			</div>
+		</div>
+
+		<div class="jobs_description border">
+			<div class="jobs_description_intro">
+				<i class="fa-regular fa-file"></i> Job Description
+				<p>Provide the detailed information about the position</p>
+			</div>
+
+			<div class="job_desc_text">
+				<p>Job Description</p>
+				<textarea
+					class="form-control"
+					rows="6"
+					name="job[jobDescription]"
+					id=""
+					placeholder="describe the role, responsibilities, and expectations..."
+					required
+				></textarea>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">
+					Enter some description about this Job
+				</div>
+			</div>
+
+			<div class="website_link_div">
+				<p>Website Link</p>
+				<input
+					type="text"
+					class="form-control"
+					name="job[websiteLink]"
+					placeholder="e.g. https://www.google.co.in/"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Website link required!!</div>
+			</div>
+		</div>
+
+		<div class="jobs_description border">
+			<div class="jobs_description_intro">
+				<i class="fa-regular fa-building"></i> Company Information
+				<p>Provide additional information about the company</p>
+			</div>
+			
+			<div class="website_link_div">
+				<p>Company Name   <span style="color: red;">*</span></p>
+				<input
+					type="text"
+					class="form-control"
+					name="job[companyName]"
+					placeholder="e.g. Google"
+					required
+				/>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">Website link required!!</div>
+			</div>
+
+			<div class="job_desc_text">
+				<p class="mt-3">Company Description (optional)</p>
+				<textarea
+					class="form-control"
+					rows="6"
+					name="job[companyDescription]"
+					id=""
+					placeholder="describe the role, responsibilities, and expectations..."
+					
+				></textarea>
+				<div class="valid-feedback">Looks good!</div>
+				<div class="invalid-feedback">
+					Enter some description about this Job
+				</div>
+			</div>
+
+		</div>
+		<button class="btn btn-outline-dark mb-4">Post Job</button>
+	</form>
+</div>
+
+<script>
+	function toggleCheckbox(element, checkboxId) {
+		const checkbox = document.getElementById(checkboxId);
+		checkbox.checked = !checkbox.checked; // Toggle checkbox state
+		element.classList.toggle("checked", checkbox.checked); // Change background color
+	}
+</script>

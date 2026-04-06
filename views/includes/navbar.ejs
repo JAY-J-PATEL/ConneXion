@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="../../css/style.css">
+
+
+<nav class="navbar navbar-expand-sm bg-body-light border-bottom sticky-top">
+
+    <div class="container-fluid">
+      <a class="navbar-brand ConneXion_navbar" href="/ConneXion">Conne<span class="Xion">Xion</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ms-auto nav-diff-links">
+          <% if(!currUser) { %>
+            <!-- <div class="nav-home-links">
+              <a href="">Home</a> &nbsp;&nbsp;
+              <a href="">About us</a> &nbsp;&nbsp;
+              <a href="">Responsibilities</a> &nbsp;&nbsp;
+              <a href="">Gallery</a> &nbsp;&nbsp;
+              <a href="">Success Stories</a> &nbsp;&nbsp;
+            </div>  -->
+            <a class="landing_page_join_btn nav-join-btn" href="/login">Join</a>
+            <!-- <a class="nav-link" href="/signup">Signup</a> -->
+          <% } %>
+          <% if(currUser) { %>
+              <div class="user_details m-3" style="color: rgb(79, 78, 78);">
+                <b style="float: right;"><i class="fa-regular fa-circle-user"></i>  <%= currUser.username %></b> <br />
+                <%= currUser.genre %> | <%= currUser.branch %> | <%= currUser.batch %>
+              </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>

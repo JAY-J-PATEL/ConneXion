@@ -1,0 +1,64 @@
+<% layout("/layouts/boilerplate") %>
+
+<a href="/ConneXion" style="color: darkgray; text-decoration: none;"><i class="fa-solid fa-arrow-left"></i>  Back to home</a>
+
+<div class="row mt-5">
+        
+    <form method="post" action="/ConneXion/user/<%=user._id%>?_method=PUT" novalidate class="needs-validation">
+
+        <div class="col-lg-8 offset-lg-2" >
+
+
+            <div class="mb-3">
+                <label for="username" class="form-label">username</label>
+                <input type="text" name="user[username]" class="form-control" id="username" value="<%=user.username%>"  required>
+                <div class="invalid-feedback">Please enter valid title</div>
+            </div>
+
+
+
+            <div class="mb-3">
+                <label for="email" class="form-label">email</label>
+                <input type="text" name="user[email]" class="form-control" id="email" value="<%= user.email %> "  required>
+                <div class="invalid-feedback">Please enter valid title</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="batch" class="form-label">batch</label>
+                <input type="text" name="user[batch]" class="form-control" id="batch" value="<%= user.batch %> "  required>
+                <div class="invalid-feedback">Please enter valid title</div>
+            </div>
+
+            
+            
+            <div class="mb-3">
+                <label for="genre" class="form-label">Genre </label>
+                <select class="form-select"  name="user[genre]">
+                    <option id="genre" value="Admin" <%= user.genre === 'Admin' ? 'selected' : '' %>>Admin</option>
+                    <option id="genre" value="Student" <%= user.genre === 'Student' ? 'selected' : '' %>>Student</option>
+                    <option id="genre" value="Alumni" <%= user.genre === 'Alumni' ? 'selected' : '' %>>Alumni</option>
+                    <option id="genre" value="Block" <%= user.genre === 'Block' ? 'selected' : '' %>>Block</option>
+                </select>
+            </div>
+              
+            <div class="mb-3">
+                <label for="genre" class="form-label">Branch </label>
+                <select  class="form-select custom-select" name="user[branch]" id="branchFilter" required>
+                    <option value="Computer Science Engineering" <%= user.branch == "Computer Science Engineering" ? 'selected' : ''  %>>Computer Science Engineering</option>
+                    <option value="Mechanical Engineering" <%= user.branch == "Mechanical Engineering" ? 'selected' : ''  %>>Mechanical Engineering</option>
+                    <option value="Civil Engineering" <%= user.branch == "Civil Engineering" ? 'selected' : ''  %>>Civil Engineering</option>
+                    <option value="Electrical Engineering" <%= user.branch == "Electrical Engineering" ? 'selected' : ''  %>>Electrical Engineering</option>
+                    <option value="Aeronautical Engineering" <%= user.branch == "Aeronautical Engineering" ? 'selected' : ''  %>>Aeronautical Engineering</option>
+                    <option value="Chemical Engineering" <%= user.branch == "Aeronautical Engineering" ? 'selected' : '' %>>Chemical Engineering</option>
+                    <option value="Information Technology" <%= user.branch == "Chemical Engineering" ? 'selected' : ''  %>>Information Technology</option>                                                              
+                    <option value="Environmental Engineering" <%= user.branch == "Environmental Engineering" ? 'selected' : ''  %>>Environmental Engineering</option>
+                    <option value="Biomedical Engineering" <%= user.branch == "Biomedical Engineering" ? 'selected' : ''  %>>Biomedical Engineering</option>
+                    <option value="Industrial Engineering" <%= user.branch == "Industrial Engineering" ? 'selected' : ''  %>>Industrial Engineering</option>
+                </select>
+            </div>
+
+            <button class="btn btn-outline-dark mt-4">Edit User Information</button>
+        </div>
+        
+    </form>
+</div>

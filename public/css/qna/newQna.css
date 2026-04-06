@@ -1,0 +1,104 @@
+
+
+.back_home {
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    color: gray;
+}
+
+.back_home a {
+    text-decoration: none;
+    color: gray;
+}
+
+.newQna_div {
+    margin-bottom: 3rem;
+}
+
+.ask_que_div {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: orangered;
+}
+
+.inner_main_div_new_question {
+    /* padding-right: 20rem; */
+    width: 50%;
+    margin: auto;
+}
+
+.que_title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+label {
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+}
+
+.que_desc {
+    margin-bottom: 1rem;
+}
+
+.que_branch {
+    margin-bottom: 1rem;
+}
+
+.post_btn {
+    border: 0.5px solid orangered;
+    margin-top: 1rem;
+}
+
+.post_btn:hover {
+    background-color: orangered;
+    color: white;
+}
+
+.post_cancle_btn {
+    margin-top: 1rem;
+    margin-left: 0.6rem;
+    border: 1px solid gray;
+    background-color: rgba(128, 128, 128, 0.255);
+}
+
+.post_cancle_btn:hover {
+    border: 1px solid gray;
+}
+
+@media screen and (max-width: 1000px) {
+    .inner_main_div_new_question {
+        /* padding-right: 20rem; */
+        width: 100%;
+        margin: 10px;
+    }
+    
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.custom-checkbox {
+    border: 1px solid orange;
+    padding: 5px 20px;
+    margin: 10px 0px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:  0.3s, color 0.3s;
+}
+
+
+
+.custom-checkbox.checked {
+    background: orangered; /* Orange when checked */
+    border: orangered;
+    color: white;
+}

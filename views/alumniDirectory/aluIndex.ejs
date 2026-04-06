@@ -1,0 +1,9 @@
+<% layout("/layouts/boilerplate") %> 
+
+<% for(alumni of alumnis) { %>
+    <div class="card border">
+        <h4><%= alumni.username %></h4>
+        <h4><%= alumni.branch %></h4>
+        <h4><%= alumni.batch %></h4>
+    </div>
+<% } %>

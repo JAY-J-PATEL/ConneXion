@@ -1,0 +1,68 @@
+<% layout("/layouts/boilerplate") %>
+
+<link rel="stylesheet" href="/css/events/eventStyle.css">
+<link rel="stylesheet" href="/css/events/newevent.css">
+<body>
+
+
+    <% if(currUser && currUser.genre === "Student") { %>
+        <div class="neweventbtn d-grid gap-2 d-md-flex justify-content-md-end">
+            <form method="get" action="/events/new">
+                <button class="btn newevent_btn">Post New Event</button>
+            </form>
+          </div>
+    <% } %>
+
+    <div id="searchContainer" class="search_div">
+        <input type="text" class="form-control" id="eventSearchBox" placeholder="&#xF002; Search events..." style="font-family:Inter, FontAwesome" />
+        <button class="btn event_search_btn">Search</button>
+    </div>
+
+    <div class="events_container">
+        <% for(let event of [...allEvents].reverse()) { %>
+        
+        
+            <a class="divlink" href="/events/<%= event.id %>"><div class="card each_event_div border pb-2">
+
+                <img src="<%= event.image %>" class="cardimg card-img-top" alt="Event Img">
+
+                <div class="card-img-overlay"></div>
+               
+
+
+
+                <div class="card-body">
+
+                    <div class="event_heading">
+                        <%= event.title %>
+                    </div>
+
+                    <div class="tag_price">
+                        <div class="tags">
+                            <span class="eventtype"><%= event.eventtype[0] %></span>
+                        </div>
+                        
+                        <div class="vanue"><i class="icon_color fa-solid fa-location-dot"></i>&nbsp;<%= event.location %></div>
+                    </div>
+
+                    
+                    <div class="price">
+                        <% if(event.price === 0){ %>
+                            FREE
+                            <% } else { %>
+                                &#8377;<%= event.price.toLocaleString("en-IN") %>
+                                <% } %>
+                    </div>
+                    
+
+                    <div class="card-text">         
+                        <span style="white-space: pre-line;"><%= event.description %></span>
+                    </div>
+
+                </div>
+            </div>
+            </a>
+        <% } %>
+    </div>
+
+<script src="../../js/filters/eventFilter.js"></script>

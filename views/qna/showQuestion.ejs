@@ -1,0 +1,84 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/qna/showQuestion.css">
+<link rel="stylesheet" href="/css/qna/qnaIndex.css">
+
+
+<!-- <h1>See Question In Details</h1> -->
+
+
+<div class="show_question_inner_div_main_container">
+    <a class="back_to_home" href="/qna"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    <div class="student_inro">
+        <div class="student_left_intro">
+            <h3 class="student_left_intro_name"><%= question.queAuthor.username %></h3>
+            <p class="student_left_intro_genre"><%= question.queAuthor.genre %> | <%= question.queAuthor.branch %> | class of <%= question.queAuthor.batch %></p>
+        </div>
+    </div>
+    
+    <div class="show_question_question">
+        <p class="question_quetitle"><%= question.queTitle %></p>
+        <p class="question_queContent"><%= question.queContent %></p>
+        <div class="question_queBranch">
+        <% for(let q of question.branch ) { %>
+            <div class="one_branch"><%= q %></div>
+        <% } %>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div class="link_div">
+        <p class="Answer_tag mb-4 mt-4"><%= question.answers.length %>  Answers</p>
+        <a class="writeyouranslink" href="#writeyourans">Write Your Answer</a>
+    </div>
+
+    
+    <div >
+        <% for(ans of question.answers) { %>
+            <div class="each_ans_body">
+                
+                <div class="answer_inro">
+                    <h3 class="answer_show_username"><%= ans.ansAuthor.username %></h3>
+                    <p class="student_left_intro_genre"><%= ans.ansAuthor.genre %> | <%= ans.ansAuthor.branch %> | class of <%= ans.ansAuthor.batch %></p>
+                </div>
+                <p class="answer_show_content">
+                    <%= ans.ansContent %>
+                    
+                    <% if(currUser && ans.ansAuthor._id.equals(currUser._id)) { %>
+                        <div class="answer_show_edit_delete">
+                            <form method="get" action="/qna/<%= question._id %>/<%= ans._id %>/new">
+                                <button class="answer_edit"><i class="fa-solid fa-pen-to-square"></i>  Edit Answer</button>
+                            </form>
+        
+                            <form method="POST" action="/qna/<%= question._id %>/<%= ans._id %>?_method=DELETE">
+                                <button class="ans_del"><i class="fa-solid fa-trash"></i>  Delete Answer</button>
+                            </form>
+                        </div>
+                    <% } %>
+                </p>
+                <hr>
+            </div>
+        <% } %>
+    </div>
+
+    <div>
+        
+        <h4>Your Answer</h4>
+        
+        <div id="writeyourans">
+            <form method="post" action="/qna/<%= question._id %>/ans" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1"></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" name="answer[ansContent]" rows="5" placeholder="write answer..." required></textarea>
+                    <div class="invalid-feedback">
+                        Please provide a valid Answer.
+                    </div>
+                </div>
+        
+                <br>
+                
+                <button class="btn show_post_answer">Post Answer</button>
+            </form>
+        </div>
+    </div>
+</div>

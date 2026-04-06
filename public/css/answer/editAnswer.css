@@ -1,0 +1,56 @@
+.back_home_edit a {
+    color: rgba(128, 128, 128, 0.513);
+    text-decoration: none;
+}
+
+.main_inner_container {
+    margin-top: 79px;
+    padding: 2rem;
+}
+
+.back_home_edit {
+    margin: 1rem;
+    margin-left: 0;
+    color: rgba(128, 128, 128, 0.513);
+}
+
+h4 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+.class_btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit_btn {
+    border: 0.5px solid black;
+    margin: 0;
+    height: 2.5rem;
+}
+
+.edit_btn:hover {
+    background-color: orangered;
+    color: white;
+}
+
+.cancle_btn {
+    border: 0.5px solid black;
+    height: 2.5rem;
+}
+
+.cancle_btn a {
+    text-decoration: none;
+    color: black;
+}
+
+.cancle_btn:hover {
+    border: 0.5px solid orangered;
+    color: orangered;
+}
+
+.cancle_btn a:hover {
+    color: orangered;
+}

@@ -1,0 +1,88 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/qna/newQna.css">
+
+<div class="inner_main_div_new_question">
+    <div class="back_home"><a href="/qna"><i class="fa-solid fa-arrow-left"></i>  Back to home</a></div>
+    <div class="newQna_div">
+        <div class="ask_que_div">Ask a New Question</div>
+
+        <form method="post" action="/qna/new" class="needs-validation" novalidate>
+            
+
+            <div class="que_title">
+                <label for="exampleInputEmail1">Question Title </label><br>
+                <textarea name="question[queTitle]" class="form-control" id="" rows="4" cols="30" placeholder="e.x., How to find job oppertunities in fintech sector?" required></textarea>
+                <div class="invalid-feedback">Please provide a valid Question Title.</div>
+                <div class="valid-feedback">Looks good!</div>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Be specific and imagine you're asking a question to another person.
+                </small>
+            </div>
+
+
+
+            <div class="que_desc">
+                <label for="exampleInputEmail1">Question details </label><br>
+                <textarea name="question[queContent]" class="form-control" id="" rows="8" cols="30"
+                placeholder="Provide all the details someone would need to answer your question..." required></textarea>
+                <div class="invalid-feedback">Please provide a valid Question Description.</div>
+                <div class="valid-feedback">Looks good!</div>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                    Include all the information someone would need to answer your question.
+                </small>
+            </div>
+
+            <div class="que_branch">
+                <label class="my-1 mr-2" for="relatedBranch">Selected Related Branch</label><br>
+
+                <div class="checkbox-container">
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox1')">Computer Science Engineering</div>
+                    <input type="checkbox" id="checkbox1" name="question[branch]" value="Computer Science Engineering" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox2')">Mechanical Engineering</div>
+                    <input type="checkbox" id="checkbox2" name="question[branch]" value="Mechanical Engineering" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox3')">Civil Engineering</div>
+                    <input type="checkbox" id="checkbox3" name="question[branch]" value="Civil Engineering" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox4')">Electrical Engineering</div>
+                    <input type="checkbox" id="checkbox4" name="question[branch]" value="Electrical Engineering" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox5')">Aeronautical Engineering</div>
+                    <input type="checkbox" id="checkbox5" name="question[branch]" value="Aeronautical Engineering" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox6')">Chemical Engineering</div>
+                    <input type="checkbox" id="checkbox6" name="question[branch]" value="Chemical Engineering" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox7')">Information Technology</div>
+                    <input type="checkbox" id="checkbox7" name="question[branch]" value="Information Technology" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox8')">Environmental Engineering</div>
+                    <input type="checkbox" id="checkbox8" name="question[branch]" value="Environmental Engineering" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox9')">Biomedical Engineering</div>
+                    <input type="checkbox" id="checkbox9" name="question[branch]" value="Biomedical Engineering" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox10')">Industrial Engineering</div>
+                    <input type="checkbox" id="checkbox10" name="question[branch]" value="Industrial Engineering" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox11')">All Branches</div>
+                    <input type="checkbox" id="checkbox11" name="question[branch]" value="All Branches" hidden>
+                </div>
+
+            </div>
+    
+    
+            <button class="btn post_btn">Post Question</button>
+            <a href="/qna" class="btn post_cancle_btn">Cancle</a>
+        </form>
+    </div>
+</div>
+
+<script>
+	function toggleCheckbox(element, checkboxId) {
+		const checkbox = document.getElementById(checkboxId);
+		checkbox.checked = !checkbox.checked; // Toggle checkbox state
+		element.classList.toggle("checked", checkbox.checked); // Change background color
+	}
+</script>

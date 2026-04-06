@@ -1,0 +1,158 @@
+.inside_main_container {
+    /* background-color: red; */
+    height: 100vh;
+    position: fixed;
+    margin-right: 1rem;
+}
+
+.intro_div {
+    width: 100%;
+    background-color: orangered;
+    /* height: 100px; */
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem 0 1rem;
+    margin-right: 20px;
+    font-family: "Inter";
+}
+
+.welcom_back_heading {
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+
+.intro_div_intro {
+    font-size: 15px;
+    color: whitesmoke;
+}
+
+.latest_event_job_alumni {
+    width: 100%;
+    /* height: 40%; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+}
+
+.mutual_latest_card {
+    width: 400px;
+    height: 300px;
+    padding: 1rem;
+    /* background-color: black; */
+    border-radius: 0.5rem;
+    border: 0.2px solid rgb(190, 187, 187);
+}
+
+.date_price_venue {
+    margin-top: 8px;
+    color: rgb(108, 106, 106);
+}
+
+.mutual_latest_card i {
+    color: darkgray;
+    font-size: 12px;
+    padding-right: 8px;
+    margin-top: 10px;
+}
+
+.event_heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+}
+
+.event_heading_desc {
+    color: gray;
+}
+
+.event_name {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.event_description {
+    margin-top: 5px;
+    height: 50px;
+    overflow: hidden;
+    
+}
+
+.view_all_events_link {
+    margin-top: 0.5rem;
+}
+
+.view_all_events_link a{
+    text-decoration: none;
+    color: orangered;
+    font-weight: 600;
+}
+
+.all_branch_desc {
+    border-radius: 0.5rem;
+    border: 0.5px solid darkgray;
+    padding: 1.5rem;
+    /* height: 150px; */
+}
+
+
+.latest_questions_div {
+    margin-right: 2rem;
+    width: 100%;
+}
+
+.question_div_heading {
+    font-size: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-weight: 600;
+
+}
+
+
+.latest_que_branch {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.branch_desc {
+    /* background-color: red; */
+    margin-top: 1rem;
+    padding: 0.5rem;
+    padding-bottom: 0;
+}
+
+
+.all_branch_desc_username {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.all_branch_desc_branch {
+    color: darkgrey;
+}
+
+.all_branch_desc_queContent {
+    margin-top: 0.5rem;
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.see_all_questions a{
+    text-decoration: none;
+    font-weight: 600;
+    color: orangered;
+}
+
+@media screen and (max-width: 1400px) {
+    .inside_main_container {
+        position: relative;
+    }
+}

@@ -1,0 +1,115 @@
+<% layout("/layouts/boilerplate") %>
+<link rel="stylesheet" href="/css/events/eventStyle.css">
+<link rel="stylesheet" href="/css/events/newevent.css">
+
+
+
+
+    <div class="new_event_post_container row">
+        
+        <form method="post" action="/events/<%=event._id%>?_method=PUT" novalidate class="needs-validation">
+
+            <div class="col-lg-8">
+
+                <h1 >Edit an Event</h1>
+                
+                <div class="mb-3">
+                    <label for="titlename" class="form-label">Title</label>
+                    <input type="text" value="<%= event.title %>" name="event[title]" class="form-control" id="titlename" placeholder="enter title" required>
+                    <div class="invalid-feedback">Please enter valid title</div>
+                </div>
+    
+    
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea type="text" name="event[description]" rows="8" placeholder="enter title" class="form-control" id="description" required><%= event.description %></textarea>
+                    <div class="invalid-feedback">Please enter some description about event</div>
+                </div>
+                
+    
+
+                <div class="mb-3">
+                    <label for="imagelink" class="form-label">Image</label>
+                    <input type="text" value="<%= event.image %>" name="event[image]" placeholder="enter image" class="form-control" id="imagelink" required>
+                </div>
+
+    
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" value="<%= event.price %>" name="event[price]" placeholder="enter price" class="form-control" id="price" required>
+                    <div class="invalid-feedback">Enter a valid price</div>
+                </div>
+
+    
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location:</label>
+                    <input type="text" value="<%= event.location %>" name="event[location]" placeholder="enter location" class="form-control" id="location" required>
+                    <div class="invalid-feedback">Please provide location details</div>
+                </div>
+        
+
+                <div class="checkbox-container">
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox1')">Tech Expo</div>
+                    <input type="checkbox" id="checkbox1"name="event[eventtype]" value="Tech" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox2')">Sports</div>
+                    <input type="checkbox" id="checkbox2" name="event[eventtype]" value="Sports" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox3')">Education</div>
+                    <input type="checkbox" id="checkbox3" name="event[eventtype]" value="Education" hidden>
+            
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox4')">Fun</div>
+                    <input type="checkbox" id="checkbox4" name="event[eventtype]" value="Fun" hidden>
+
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox5')">AI Summit</div>
+                    <input type="checkbox" id="checkbox5" name="event[eventtype]" value="AI Summit" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox6')">Startup Bootcamp</div>
+                    <input type="checkbox" id="checkbox6" name="event[eventtype]" value="Startup Bootcamp" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox7')">Cybersecurity Workshop</div>
+                    <input type="checkbox" id="checkbox7" name="event[eventtype]" value="Cybersecurity Workshop" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox8')">Music Fest</div>
+                    <input type="checkbox" id="checkbox8" name="event[eventtype]" value="Music Fest" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox9')">Health & Wellness Expo</div>
+                    <input type="checkbox" id="checkbox9" name="event[eventtype]" value="Health & Wellness Expo" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox10')">Gaming Championship</div>
+                    <input type="checkbox" id="checkbox10" name="event[eventtype]" value="Gaming Championship" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox11')">Photography Contest</div>
+                    <input type="checkbox" id="checkbox11" name="event[eventtype]" value="Photography Contest" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox12')">Literary Fest</div>
+                    <input type="checkbox" id="checkbox12" name="event[eventtype]" value="Literary Fest" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox14')">Robotics Workshop</div>
+                    <input type="checkbox" id="checkbox14" name="event[eventtype]" value="Robotics Workshop" hidden>
+                    
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox15')">Seminar</div>
+                    <input type="checkbox" id="checkbox15" name="event[eventtype]" value="Seminar" hidden>
+
+                    <div class="custom-checkbox" onclick="toggleCheckbox(this, 'checkbox16')">Webinar</div>
+                    <input type="checkbox" id="checkbox16" name="event[eventtype]" value="Webinar" hidden>
+                </div>
+
+                <button class="btn post_event_btn">Edit</button>
+            </div>
+            
+        </form>
+    </div>
+
+
+    <!-- checkbox js -->
+
+    <script>
+        function toggleCheckbox(element, checkboxId) {
+            const checkbox = document.getElementById(checkboxId);
+            checkbox.checked = !checkbox.checked; // Toggle checkbox state
+            element.classList.toggle("checked", checkbox.checked); // Change background color
+        }
+    </script>
+</body>
+</html>

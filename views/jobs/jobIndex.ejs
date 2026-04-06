@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate") %>
+  <link rel="stylesheet" href="/css/jobs/jobIndex.css" />
+  <link rel="stylesheet" href="/css/qna/qnaIndex.css" />
+
+
+  <% if(currUser.genre !="Student" ) { %>
+    <div class="post_job_btn_outer_div">
+      <a href="/jobs/new" class="post_job_link"><button class="post_job">Post Job</button></a>
+    </div>
+    <% } %>
+
+      <div class="filter_div">
+
+        <div id="searchContainer" class="search_div">
+          <input type="text" class="form-control" id="searchBox" placeholder="&#xF002; Search Jobs"
+            style="font-family:Inter, FontAwesome" />
+          <button id="searchButton">Search</button>
+        </div>
+      </div>
+
+      <div class="jobIndex_inner_div">
+        <% for(let job of [...allJobs].reverse()) { %>
+          <div class="each_job card">
+            <div class="posted_job_user">
+              <div class="job_posted_user_details">
+                <p>
+                  <%= job.jobPostedUser.username %> <br />
+                    <%= job.jobPostedUser.batch %> | <%= job.jobPostedUser.branch %>
+                </p>
+              </div>
+
+              <div class="edit_and_delete_job_buttons">
+                <% if(currUser && currUser._id.equals(job.jobPostedUser._id)) { %>
+                  <div class="edit_delete_job_btn">
+                    <div class="job_edit_btn">
+                      <a href="/jobs/<%= job._id %>/edit"><i class="fa-regular fa-pen-to-square"></i></a>
+                    </div>
+                    <div class="job_delete_btn">
+                      <form action="/jobs/<%= job._id %>?_method=Delete" method="post">
+                        <button><i class="fa-solid fa-trash"></i></button>
+                      </form>
+                    </div>
+                  </div>
+                  <% } %>
+              </div>
+            </div>
+            <div class="jobRole">
+              <%= job.jobRole %>
+            </div>
+            <div class="companyName">
+              <%= job.companyName %>
+            </div>
+            <div class="flex_job_items">
+              <div class="flex_job_items_1">
+                <div class="jobLocation">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <%= job.jobLocation %>
+                </div>
+                <div class="jobType">
+                  <i class="fa-regular fa-clock"></i>
+                  <%= job.jobType %>
+                </div>
+              </div>
+              <div class="flex_job_items_2">
+                <div class="salaryRange">
+                  <i class="fa-solid fa-suitcase"></i>
+                  <%= job.salaryRange %>
+                </div>
+                <div class="education">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <%= job.education %>
+                </div>
+              </div>
+            </div>
+            <div class="flex_items">
+              <div class="department info">
+                <%= job.department %>
+              </div>
+              <div class="applicationDeadline info">
+                <i class="fa-regular fa-calendar-days"></i>
+                <%= job.applicationDeadline %>
+              </div>
+              <div class="experience info">
+                <%= job.experience %>
+              </div>
+            </div>
+            <% if(job.companyDescription.trim() !="" && job.jobDescription) { %>
+              <div class="jobDescription">
+                <b>Description(Job) :</b>
+                <%= job.jobDescription %>
+              </div>
+              <div class="companyDescription">
+                <b>Description(Company) :</b>
+                <%= job.companyDescription %>
+              </div>
+              <% } else if(job.jobDescription) { %>
+                <div class="jobDescription">
+                  <%= job.jobDescription %>
+                </div>
+                <% } else { %>
+                  <div class="jobDescription">
+                    <%= job.jobDescription %>
+                  </div>
+                  <% } %>
+
+                    <div class="website_save_btn">
+                      <div class="website">
+                        <p class="see_job_details" style="margin-top: 1rem;">see detail</p>
+                        &nbsp;&nbsp;
+                        
+                        <a href="<%= job.websiteLink %>" target="_main"><button>Go to Website</button></a>
+                        
+                      </div>
+                    </div>
+          </div>
+          <% } %>
+      </div>
+
+
+<script src="../js/filters/jobFilter.js"></script>
